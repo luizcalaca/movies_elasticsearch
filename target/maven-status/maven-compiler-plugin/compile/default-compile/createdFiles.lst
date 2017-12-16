@@ -1,0 +1,5 @@
+br/com/fasam/pos/bigdata/MoviesSearchPos/repository/Filmes.class
+br/com/fasam/pos/bigdata/MoviesSearchPos/MoviesSearchPosApplication.class
+br/com/fasam/pos/bigdata/MoviesSearchPos/config/MvcConfiguration.class
+br/com/fasam/pos/bigdata/MoviesSearchPos/controller/IndexController.class
+br/com/fasam/pos/bigdata/MoviesSearchPos/model/Filme.class
