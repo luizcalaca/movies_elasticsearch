@@ -62,6 +62,22 @@ public class Filmes {
 			}
 	}
 
+	public List<Filme> melhoresFilmes(String titulo, String sinopse, Integer lancamento) {
+
+			SearchRequestBuilder searchRequest = client.prepareSearch(INDEX).setTypes(DOC_TYPE).addSort("reputacao", SortOrder.DESC);
+			addFilter(titulo, sinopse, lancamento, searchRequest);
+			SearchResponse searchResponse = searchRequest.execute().actionGet();
+
+			List<SearchHit> searchHits = Arrays.asList(searchResponse.getHits().getHits());
+
+			List<Movie> filmes = new ArrayList<>();
+			searchHits.forEach(hit -> {
+					filmes.add(JSON.parseObject(hit.getSourceAsString(), Movie.class));
+			});
+
+			return filmes;
+	}
+
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();
