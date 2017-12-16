@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Filme implements Serializable{
 	private static final long serialVersionUID = 2399028824723797630L;
 
-	private String movie_title;
-	private Date movie_launch_at;
-	private String movie_synopsis;
-	private Double movie_reputation;
+	private String titulo;
+	private Date lacamento;
+	private String sinopse;
+	private Double reputacao;
 }

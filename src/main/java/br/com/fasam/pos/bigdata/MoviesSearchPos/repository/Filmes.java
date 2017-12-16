@@ -44,6 +44,24 @@ public class Filmes {
 		return filmes;
 	}
 
+
+	private void mapearIndice() throws IOException {
+			boolean exists = client.admin().indices().prepareExists(INDEX).execute().actionGet().isExists();
+
+			if (!exists) {
+					XContentBuilder mapping = XContentFactory.jsonBuilder().startObject()
+							.startObject("properties")
+								.startObject("titulo").field("type", "text").endObject()
+								.startObject("lancamento").field("type", "date").endObject()
+								.startObject("sinopse").field("type", "text").endObject()
+								.startObject("reputacao").field("type", "double").endObject()
+							.endObject()
+					.endObject();
+
+					client.admin().indices().prepareCreate(INDEX).addMapping(DOC_TYPE, mapping).execute().actionGet();
+			}
+	}
+
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();
